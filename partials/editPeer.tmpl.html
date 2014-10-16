@@ -1,0 +1,35 @@
+<material-dialog>
+  <div class="dialog-content" layout="vertical">
+    <div layout="horizontal" layout-align="center">
+      <input class="bigInput" ng-model="role.name" flex></input>
+      <img src="assets/images/avatar.png" width="100" height="100">
+    </div>
+    <material-checkbox ng-model="role.recommend">Recommend</material-checkbox>
+    <material-input-group>
+      <label for="ni">Nym Id</label>
+      <material-input id="ni" ng-model="valueNi">
+    </material-input-group>
+    <material-input-group>
+      <label for="pk">Public Key</label>
+      <material-input id="pk" ng-model="value">
+    </material-input-group>
+  </div>
+  <div class="dialog-actions" layout="horizontal" layout-align="end">
+    <material-button id="closeButton" ng-click="close()">
+      Close
+    </material-button>
+    <material-button id="saveButton" class="material-button-colored" ng-click="addPeer(roleName)">
+      Save
+    </material-button>
+  </div>
+    <!--<material-input id="roleNameInput" type="text" ng-model="roleName" placeholder="Peer Username"></material-input>
+  </div>
+  <div class="dialog-actions" layout="horizontal" layout-align="end">
+    <material-button id="closeButton" ng-click="close()">
+      Close
+    </material-button>
+    <material-button id="saveButton" class="material-button-colored" ng-click="addPeer(roleName)">
+      Add Peer
+    </material-button>
+  </div>-->
+</material-dialog>

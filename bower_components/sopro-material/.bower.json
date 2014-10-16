@@ -1,0 +1,32 @@
+{
+  "name": "sopro-material",
+  "version": "0.1.6",
+  "authors": [
+    "SocietyPro"
+  ],
+  "description": "SoPro's styles, scripts and components",
+  "main": "demo/index.html",
+  "license": "MIT",
+  "homepage": "https://github.com/sopro-components/sopro-material",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-titlebar": "https://github.com/sopro-components/material-titlebar.git",
+    "angular": "1.3.x",
+    "angular-animate": "1.3.x"
+  },
+  "_release": "0.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.6",
+    "commit": "14c91d0e00a5ccb0993bdd278c80549ce8ca9dc5"
+  },
+  "_source": "https://github.com/sopro-components/sopro-material.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/sopro-components/sopro-material.git"
+}

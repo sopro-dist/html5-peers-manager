@@ -1,0 +1,16 @@
+<material-dialog>
+  <div>
+    <div class="dialog-content">
+      <material-input id="roleNameInput" type="text" ng-model="roleName" placeholder="Peer Username"></material-input>
+    </div>
+    <div class="dialog-actions" layout="horizontal" layout-align="end">
+      <material-button id="closeButton" ng-click="close()">
+        Close
+      </material-button>
+      <material-button id="saveButton" class="material-button-colored" ng-click="addPeer(roleName)">
+        Add Peer
+      </material-button>
+    </div>
+
+  </div>
+</material-dialog>
