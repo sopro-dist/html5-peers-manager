@@ -47,8 +47,7 @@ app.directive('ngReallyClick', [function() {
 app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, menu, roleAll, roleDestroy, roleChange){
 
   $scope.menu = menu;
-  $scope.roles = roleAll();
-  console.log($scope.roles);
+  $scope.roles = Cambrian.me.peers;
 
   $scope.toggleMenu = function () {
     $materialSidenav('left').toggle();
