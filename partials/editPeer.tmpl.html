@@ -1,20 +1,21 @@
 <material-dialog>
-  <div class="dialog-content" layout="vertical">
+  <div class="dialog-content" layout="vertical" ng-init="value = '­ ­­­­­BEGIN PUBLIC KEY­­­­­CpACLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJBUVVBQTRHTkFEQ0JpUUtCZ1FESDF2VmF0L0FOOXFDNDc1a0F5UHBGMGppMgpidTZ4ZVhQVXNNMVUvUVJESGVVWnozVW9BMVNiZi9LK29rU201VmxEWGczVldmRnRyb3lWemZpc2o3Ymh5RE9kClVDZkdNT0loVHo0U0Mrb3VGbWVQNVV1clREaVFkWlNtSjBhYWV6dUhxcllKSmQxb0tOai8vTG5uKzlxVlVSUTkKV3Fkb0hZM0d1bm5uNStXTTd3SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+­ ­­­­­END PUBLIC KEY­­­­­';valueNi = '4CAJYiBml17493kKf3d99J09t34HMAzX6nq0gngUMgh'">
     <div layout="horizontal" layout-align="center">
       <input class="bigInput" ng-model="role.name" flex></input>
       <img src="assets/images/avatar.png" width="100" height="100">
     </div>
     <material-checkbox ng-model="role.recommend">Recommend</material-checkbox>
-    <material-input-group>
-      <label for="ni">Nym Id</label>
-      <material-input id="ni" ng-model="valueNi">
-    </material-input-group>
-    <material-input-group>
-      <label for="pk">Public Key</label>
-      <material-input id="pk" ng-model="value">
-    </material-input-group>
+    <label for="p1">Nym ID</label>
+      <textarea id="p1" ng-model="valueNi" disabled></textarea>
+      <label for="p1">Public Key</label>
+      <textarea id="p2" ng-model="value" style="height:200px;" disabled></textarea>
   </div>
   <div class="dialog-actions" layout="horizontal" layout-align="end">
+    <material-button id="saveButton" class="material-button-colored">
+      View Recommendations...
+    </material-button>
+    <span flex></span>
     <material-button id="closeButton" ng-click="close()">
       Close
     </material-button>
