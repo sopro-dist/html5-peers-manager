@@ -1,35 +1,5 @@
 var app = angular.module("app", ["ngMaterial"]);
 
-app.factory("menu", ['$rootScope', function ($rootScope) {
-  var self;
-  var filters = [{ filter: 'All', color: '#000' }, 
-                 { filter: 'Vote', color: '#a48623' },
-                 { filter: 'Running', color: '#458B74' },
-                 { filter: 'Unstarted', color: '#D2D6DF' },
-                 { filter: 'Completed', color: '#40505E' }];
-
-  return self = {
-    filters: filters,
-
-    selectFilter: function(filter) {
-      self.currentFilter = filter;
-      if (filter.filter === "All") {
-        $rootScope.pollFilter = undefined;
-      } else if (filter.filter === "Running") {
-        $rootScope.pollFilter = "started";
-      } else if (filter.filter === "Completed") {
-        $rootScope.pollFilter = "stopped";
-      } else {
-        $rootScope.pollFilter = filter.filter.toLowerCase();
-      };
-    },
-
-    isFilterSelected: function (filter) {
-      return self.currentFilter === filter;
-    }
-  };
-}]);
-
 app.directive('ngReallyClick', [function() {
     return {
         restrict: 'A',
@@ -44,10 +14,20 @@ app.directive('ngReallyClick', [function() {
     }
 }]);
 
-app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, menu, roleAll, roleDestroy, roleChange){
+app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, $timeout ){
 
-  $scope.menu = menu;
   $scope.roles = Cambrian.me.peers;
+  $scope.toastMessage = "";
+  $scope.showToast = false;
+
+  $scope.toastIt = function(message) {
+    $scope.toastMessage = message;
+    $scope.showToast = true;
+    $timeout(function () {
+      $scope.toastMessage = message;
+      $scope.showToast = false;
+    },2000);
+  };
 
   $scope.toggleMenu = function () {
     $materialSidenav('left').toggle();
@@ -70,22 +50,26 @@ app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, me
           };
 
           $scope.createRole = function (roleName) {
-            role = roleCreate(roleName);
-            $rootScope.$broadcast('roleAdded', {role: role});
             $hideDialog();
           };
         }]
     });
   };
 
-  $scope.destroyRole = function (roleIndex) {
-    if (roleDestroy(roleIndex)) {
-      $scope.roles.splice(roleIndex, 1);
-    }
+  $scope.destroyRole = function (role) {
+    role.destroy();
+    $scope.roles = Cambrian.me.peers;
+    $scope.toastIt(role.name + " Deleted!");
+  };
+
+  $scope.recommendPeer = function(peer) {
+    peer.recommend = true;
+    $scope.toastIt(peer.name + " Recommended!");
   };
 
   $scope.$on('roleAdded', function (scope, args) {
-    addNewRole(args.role);
+    $scope.toastIt(args + " Added!");
+    $scope.roles = Cambrian.me.peers;
   });
 
   $scope.addRoleDialog = function (e) {
@@ -98,9 +82,14 @@ app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, me
             $hideDialog();
           };
 
-          $scope.createRole = function (roleName) {
-            role = roleCreate(roleName);
-            $rootScope.$broadcast('roleAdded', {role: role});
+          $scope.addPeer = function (roleName) {
+            var uArray = roleName.split('@');
+            if (uArray[uArray.length-1] == "xmpp.cambrian.org") {
+              Cambrian.me.newPeer(roleName);
+              $rootScope.$broadcast("roleAdded",roleName);
+            } else {
+              console.log("no server in username")
+            }
             $hideDialog();
           };
         }]

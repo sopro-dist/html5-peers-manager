@@ -17,7 +17,7 @@
       <span flex></span>
       <div layout="vertical" layout-align="end center" style="margin:20px;"> 
         
-        v0.0.2
+        v0.0.3
         
       </div>
   </material-sidenav>
@@ -31,6 +31,7 @@
       </div>
     </material-toolbar>
     <div class="content-padding">
+      <material-card class="toast" ng-show="showToast">{{toastMessage}}</material-card>
       <div class="card-container">
         <div id="bigLogo" class="pantheon-logo"><img src="assets/images/logo.png"></div>
         <div id="addRoleCard" class="roleCard" ng-click="addRoleDialog($event)" title="Add Role">
@@ -38,21 +39,19 @@
             <div class="roleName" title="Add a Role">Add a Peer</div>
           </div>
         </div>
-        <div class="roleCard" ng-repeat="(key, role) in roles" id="roleCard-{{key}}" ng-mouseover="role.menubar = true" ng-mouseleave="role.menubar = false">
+        <div class="roleCard" ng-repeat="role in roles track by $index" id="roleCard-{{$index}}" ng-mouseover="role.menubar = true" ng-mouseleave="role.menubar = false; role.of = false;">
           <div class="inner-margin">
-            <div ng-click="switchRole($event,key,role)">
-              <div id="roleAvatar-{{key}}"><img src="assets/images/avatar.png"></div>
-              <div id="roleName-{{key}}" class="roleName">{{role.name}}</div>
-              <!--<div id="roleDescription-{{key}}" class="roleDescription">This is a little description to show how this thing would look like</div>-->
+            <div ng-click="switchRole($event,$index,role)">
+              <div id="roleAvatar-{{$index}}"><img src="assets/images/avatar.png"></div>
+              <div id="roleName-{{$index}}" class="roleName">{{role.name}}</div>
+              <!--<div id="roleDescription-{{$index}}" class="roleDescription">This is a little description to show how this thing would look like</div>-->
             </div>
-            <div id="hoverBar-{{key}}" class="editBar animate-show" ng-show="role.menubar" layout="horizontal" layout-align="end start">
+            <div id="hoverBar-{{$index}}" class="editBar animate-show" ng-show="role.menubar" layout="horizontal" layout-align="end start">
               <material-button class="material-button-icon overflowMenuButton" ng-click="overflowToggle(role)" title="Overflow Menu"> <img class="overflowMenuIcon" ng-src="material-icons/icons/system_icons/action/res/1x_web/ic_drawer_wht_18dp.png"> </material-button>
             </div>
-              <material-card id="overflowMenu-{{key}}" class="overflowMenu animate-show" ng-show="role.of && role.menubar"> 
-              <a class="destroyAction" title="Recommend Peer">Recommend</a>
-              <a class="destroyAction" title="Mute Peer">Mute</a>
-              <a class="destroyAction" ng-really-message="Are you sure you want to delete this peer?" title="Delete Peer" ng-really-click="destroyRole(key)">Remove Peer</a>
-              <a class="destroyAction" title="Block Peer">Block</a>
+              <material-card id="overflowMenu-{{$index}}" class="overflowMenu animate-show" ng-show="role.of && role.menubar"> 
+              <a class="destroyAction" title="Recommend Peer" ng-click="recommendPeer(role)">Recommend</a>
+              <a class="destroyAction" ng-really-message="Are you sure you want to delete this peer?" title="Delete Peer" ng-really-click="destroyRole(role)">Remove Peer</a>
               <!--<a title="Role Settings">Role Settings</a>-->
               </material-card>
           </div>

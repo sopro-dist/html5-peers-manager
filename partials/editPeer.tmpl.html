@@ -1,33 +1,21 @@
 <material-dialog>
-  <div class="dialog-content" layout="vertical" 
-  ng-init="value = '';valueNi = '4CAJYiBml17493kKf3d99J09t34HMAzX6nq0gngUMgh'">
+  <div class="dialog-content" layout="vertical">
     <div layout="horizontal" layout-align="center">
-      <input class="bigInput" ng-model="role.name" flex></input>
+      <input class="bigInput" ng-model="role.name" flex disabled></input>
       <img src="assets/images/avatar.png" width="100" height="100">
     </div>
     <material-checkbox ng-model="role.recommend">Recommend</material-checkbox>
     <label for="p1">Nym ID</label>
-      <textarea id="p1" ng-model="valueNi" disabled></textarea>
+      <textarea id="p1" ng-model="role.nymId" disabled></textarea>
       <label for="p2">Public Key</label>
-      <p id="p2" style="margin:0px;">
-        - -----BEGIN PUBLIC KEY-----
-        CpACLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RR
-
-        RUJBUVVBQTRHTkFEQ0JpUUtCZ1FDdGxWMkpZbjA2RXRnQjdtUXdRSTIvaVVSegoz
-
-        QUVnMlg3WXF2Z0JScUp0S1Z0RWtVbC9PZ2hlQ1JxNEtBc3lpTlpvWGZRV2gwZlhW
-
-        OVNxSWRGK3dITjB1QmlwCk9uT05KdlhSYWRCOVV5d21PL1NzVTE5QUx5R2ZKaVcx
-
-        T2RndWdsRFhpeDhKck5lWE9jdFh3dGxpRmNEWHE5c2UKSHBBa1NYYnBiRkpTVFpx
-
-        V3JRSURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=</p>
-
-        <p style="margin:0px;">- -----END PUBLIC KEY-----</p>
+      <p id="p2" style="margin:0px;">{{role.publicKey}}</p>
   </div>
   <div class="dialog-actions" layout="horizontal" layout-align="end">
-    <material-button id="saveButton" class="material-button-colored">
-      View Recommendations...
+    <material-button id="pingButton" class="material-button-colored" ng-click="role.ping()">
+      Ping
+    </material-button>
+    <material-button id="openChatButton" class="material-button-colored" ng-click="role.openChat()">
+      Open Chat
     </material-button>
     <span flex></span>
     <material-button id="closeButton" ng-click="close()">
