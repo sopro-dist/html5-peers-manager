@@ -16,6 +16,7 @@ app.directive('ngReallyClick', [function() {
 
 app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, $timeout ){
 
+  $scope.view = "quilt";
   $scope.roles = Cambrian.me.peers;
   $scope.toastMessage = "";
   $scope.showToast = false;

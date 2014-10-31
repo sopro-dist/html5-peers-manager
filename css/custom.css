@@ -424,10 +424,6 @@ material-button.material-button-fab.material-button-fab-bottom-right {
 .stream {
   width:100%;
 }
-.stream material-card {
-  width: 95%;
-  max-width: none;
-}
 
 .mainCard {
   display: inline-block;
@@ -933,6 +929,7 @@ material-toolbar {
 }
 #quickStartButton:hover {
   border-color: rgb(75,75,75);
+}
 .chatLink {
   cursor: pointer;
 }

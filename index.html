@@ -21,12 +21,21 @@
         
       </div>
   </material-sidenav>
-  <div layout="vertical" layout-fill ng-class="{mainContentPolls:view,mainContentTemplates:!view}">
+  <div layout="vertical" layout-fill class="mainContentTemplates">
     <material-toolbar  id="appToolbar" scroll-shrink class="pantheonToolbar">
       <div layout="horizontal">
         <div class="material-toolbar-tools">
           <div id="menu-drawer-button" class="menu-icon" ng-click="toggleMenu()"> <img src="material-icons/icons/system_icons/navigation/res/1x_web/ic_menu_wht_24dp.png"> </div>
           <h2 id="appTitle" class="toolbarTitle">Peers</h2>
+        </div>
+        <span flex></span>
+        <div id="viewButtons" layout="horizontal" layout-align="end">
+          <material-button id="streamButton" class="viewButton material-button-icon" ng-class="{active: view === 'stream', inactive: view === 'quilt'}" ng-click="view = 'stream'" title="Stream View">
+            <img src="material-icons/icons/system_icons/action/res/1x_web/ic_view_stream_wht_24dp.png">
+          </material-button>
+          <material-button id="quiltButton" class="viewButton material-button-icon" ng-class="{active: view === 'quilt', inactive: view === 'stream'}" ng-click="view = 'quilt'"  title="Quilt View">
+            <img src="material-icons/icons/system_icons/action/res/1x_web/ic_view_quilt_wht_24dp.png">
+          </material-button>
         </div>
       </div>
     </material-toolbar>
@@ -34,15 +43,16 @@
       <material-card class="toast" ng-show="showToast">{{toastMessage}}</material-card>
       <div class="card-container">
         <div id="bigLogo" class="pantheon-logo"><img src="assets/images/logo.png"></div>
-        <div id="addRoleCard" class="roleCard" ng-click="addRoleDialog($event)" title="Add Role">
-          <div class="inner-margin new-user"><img src="assets/images/black-avatar.png">
+        <div id="addRoleCard" class="roleCard" ng-class="{quilt:view == 'quilt',stream:view == 'stream'}" ng-click="addRoleDialog($event)" title="Add Role">
+          <div class="inner-margin new-user" layout="vertical" layout-align="start center">
+            <img src="assets/images/black-avatar.png">
             <div class="roleName" title="Add a Role">Add a Peer</div>
           </div>
         </div>
-        <div class="roleCard" ng-repeat="role in roles track by $index" id="roleCard-{{$index}}" ng-mouseover="role.menubar = true" ng-mouseleave="role.menubar = false; role.of = false;">
+        <div class="roleCard" ng-class="{quilt:view == 'quilt',stream:view == 'stream'}" ng-repeat="role in roles track by $index" id="roleCard-{{$index}}" ng-mouseover="role.menubar = true" ng-mouseleave="role.menubar = false; role.of = false;">
           <div class="inner-margin">
             <div ng-click="switchRole($event,$index,role)">
-              <div id="roleAvatar-{{$index}}"><img src="assets/images/avatar.png"></div>
+              <div id="roleAvatar-{{$index}}" layout="vertical" layout-align="start center"><img src="assets/images/avatar.png"></div>
               <div id="roleName-{{$index}}" class="roleName">{{role.name}}</div>
               <!--<div id="roleDescription-{{$index}}" class="roleDescription">This is a little description to show how this thing would look like</div>-->
             </div>
