@@ -14,7 +14,7 @@ app.directive('ngReallyClick', [function() {
     }
 }]);
 
-app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, $timeout ){
+app.controller("appCtrl",function ($scope, $mdSidenav, $mdDialog, $timeout ){
 
   $scope.view = "quilt";
   $scope.roles = Cambrian.me.peers;
@@ -31,27 +31,34 @@ app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, $t
   };
 
   $scope.toggleMenu = function () {
-    $materialSidenav('left').toggle();
+    $mdSidenav('left').toggle();
   };
   
-  $scope.overflowToggle = function (role) {
-  	role.of = !role.of;
+  $scope.streamView = function(){
+    $scope.view = "stream";
+  };
+  $scope.quiltView = function(){
+    $scope.view = "quilt";
   };
 
   $scope.switchRole = function (e,k,role) {
-    $materialDialog({
+    $mdDialog.show({
         templateUrl: 'partials/editPeer.tmpl.html',
         targetEvent: e,
-        controller: ['$scope', '$rootScope', '$hideDialog', function ($scope, $rootScope, $hideDialog) {
-          
+        controller: ['$scope', '$rootScope', '$mdDialog', function ($scope, $rootScope, $mdDialog) {
+
+          copyRole= angular.copy(role);
           $scope.role = role;
 
           $scope.close = function () {
-            $hideDialog();
+            if (copyRole.recommend != role.recommend) {
+              role.recommend = copyRole.recommend;
+            }
+            $mdDialog.hide();
           };
 
-          $scope.createRole = function (roleName) {
-            $hideDialog();
+          $scope.editPeer = function () {
+            $mdDialog.hide();
           };
         }]
     });
@@ -74,13 +81,13 @@ app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, $t
   });
 
   $scope.addRoleDialog = function (e) {
-    $materialDialog({
+    $mdDialog.show({
         templateUrl: 'partials/addRole.tmpl.html',
         targetEvent: e,
-        controller: ['$scope', '$rootScope', '$hideDialog', 'roleCreate', function ($scope, $rootScope, $hideDialog, roleCreate) {
+        controller: ['$scope', '$rootScope', '$mdDialog', 'roleCreate', function ($scope, $rootScope, $mdDialog, roleCreate) {
         
           $scope.close = function () {
-            $hideDialog();
+            $mdDialog.hide();
           };
 
           $scope.addPeer = function (roleName) {
@@ -91,7 +98,7 @@ app.controller("appCtrl",function ($scope, $materialSidenav, $materialDialog, $t
             } else {
               console.log("no server in username")
             }
-            $hideDialog();
+            $mdDialog.hide();
           };
         }]
     });

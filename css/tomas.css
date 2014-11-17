@@ -2,9 +2,26 @@
 	overflow-y: auto
 }
 
-.card-container {
-	width: 800px;
-	margin: auto
+.container {
+  font-size: 14px;
+  height: 100%;
+  left: 10px;
+  margin: auto;
+  padding: 0 0 150px 0;
+  position: relative;
+  width: 690px;
+}
+
+@media only screen and (min-width: 1100px) {
+  .container {
+    width: 920px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .container {
+    width: 1150px;
+  }
 }
 
 .pantheon-logo {
@@ -13,10 +30,6 @@
 	margin-bottom: 40px	
 }
 
-.roleCard {
-	width: 200px;
-	display: inline-block;
-}
 
 .quilt {
 	display: inline-block;
@@ -28,29 +41,48 @@
 }
 
 .roleCard .inner-margin {
-	position: relative;	
-	background: rgba(0, 0, 0, 0.7);
-	margin-right: 15px;
-	margin-bottom: 15px;
-	 height: 230px; 
-	border: 1px solid rgba(255, 0, 0, 0.3);
-	-webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 1);
-	-moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 1);
-	box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 1);
+	background-color: #fff;
+	border-bottom: 1px solid #c4c4c4;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	border-top: 1px solid #d3d3d3;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+	color: #444;
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 208px;
+	cursor: pointer;
+}
+.streamMainCard:hover {
+	background-color: #eef6ff;
 }
 
-.roleCard img {
-	width: 100%;
-	padding: 5px 5px 0 5px;
-	max-width: 170px;
+.inner-margin:hover {
+	border-color: #679fff;
+	box-shadow: 0px 1px 0px #ccdfff;
+	outline: none;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.roleImg {
+	background-repeat: no-repeat;
+	background-size: 208px auto;
+	border: none;
+	display: block;
+	height: 156px;
+	position: relative;
+	width: 208px;
+	height: 260px;
 }
 
 .roleCard .roleName {
-	padding: 10px;
-	font-size: 10px;
-	text-transform: uppercase;
-	color: firebrick;
-	text-align: center
+	font-weight: 500;
+	margin-bottom: 3px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .roleCard .roleDescription{
@@ -61,20 +93,24 @@
 }
 
 .roleCard .editBar {
-	background: rgba(0, 0, 0, 0.5);
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	padding: 0 5px 5px 5px;
+	right: 5px;
+	top: 32%;
+	display: inline-block;
+	float: right;
+	opacity: 0.3;
+}
+
+.editBar:hover {
+	opacity: 0.8;
 }
 
 .overflowMenu {
 	position: absolute;
 	top: inherit;
 	right: -10px;
-	top: 239px;
-	background: rgba(255, 255, 255, 0.8);
+	top: 55px;
+	background: rgba(255, 255, 255, 1);
 }
 
 .overflowMenu a {
@@ -100,4 +136,8 @@
 }
 #addRoleCard {
 	vertical-align: top;
+	margin-right: -5px;
+}
+md-backdrop.md-opaque.md-default-theme {
+	background-color: rgba(0,0,0,0);
 }

@@ -29,10 +29,6 @@
 
 /* Miscellaneous app-wide styles: */
 
-button {
-	margin-left: .5em;
-}
-
 .navButtons {
 	float: right;
 }
@@ -300,11 +296,15 @@ button {
   padding:0 10px;
 }
 
-/* Styles for material UX */
-material-sidenav {
-  max-width: 175px;
-  min-width: 175px;
-  overflow: hidden;
+/* Styles for md UX */
+md-sidenav {
+  border: 1px solid #e3e3e3;
+  border-top: none;
+  border-width: 1px 0;
+  font-size: 14px;
+  padding: 0px 0px 6px;
+  min-width: 240px;
+  max-width: 240px;
 }
 .color-chip {
   display: inline-block;
@@ -314,25 +314,52 @@ material-sidenav {
   margin: 2px;
 }
 
-.menu-icon {
-  top: 0;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
 #viewButtons {
-  margin: 8px 18px 0px 18px;
+  display: inline-block;
+  margin-right: 12px;
 }
 
 .viewButton {
-  height: 48px;
-  width: 53px;
+  -webkit-user-select: none;
+  cursor: pointer;
+  outline: none;
+  padding: 12px;
+  border-radius: 0 !important;
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 21px;
+  min-width: 0;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
 }
-.viewButton.active {
+
+.viewButton md-icon {
+  height: 24px;
+  outline: none;
+  width: 24px;
+  direction: ltr;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  margin-top: 0px;
+}
+.menuDrawerButton.active {
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.2);
+  opacity: 1 !important;
+}
+.viewButton:hover {
   background-color: rgba(0,0,0,0.1);
 }
 .viewButton.inactive {
   opacity: 0.5;
+}
+md-button .md-button-inner {
+  padding: 5px 0px;
 }
 
 .menuDrawerButton {
@@ -403,7 +430,7 @@ textarea {
 }
 
 
-material-button.material-button-fab.material-button-fab-bottom-right {
+md-button.md-button-fab.md-button-fab-bottom-right {
       top: auto;
       right: 56px;
       bottom: 28px;
@@ -517,8 +544,13 @@ div .cardMenuBar {
 }
 
 .overflowMenuButton {
-  margin-top: 6px;
-  float: right; 
+  height: 48px;
+  float: right;
+  opacity: 0.3; 
+}
+
+.overflowMenuButton:hover {
+  opacity: 1; 
 }
 
 .overflowMenu {
@@ -541,7 +573,7 @@ div .cardMenuBar {
   position: relative;
 }
 
-.material-dialog-container material-dialog .dialog-content {
+.md-dialog-container md-dialog .dialog-content {
   min-width: 400px;
   max-width: 657px;
   padding: 16px 24px;
@@ -571,17 +603,17 @@ div .cardMenuBar {
   border-bottom: 1px solid lightgrey;
 }
 
-material-checkbox {
+md-checkbox {
   margin: 1px;
 }
 
 #addOptionInput {
-  background-image: url(../material-icons/icons/system_icons/content/res/1x_web/ic_add_18dp.png);
+  background-image: url(../md-icons/icons/system_icons/content/res/1x_web/ic_add_18dp.png);
   background-repeat: no-repeat;
   text-indent: 20px;
 }
 
-material-checkbox[disabled] {
+md-checkbox[disabled] {
   opacity: 0.3;
 }
 
@@ -590,7 +622,7 @@ material-checkbox[disabled] {
   float: left;
 }
 
-.dialog-menubar-actions .material-button-icon {
+.dialog-menubar-actions .md-button-icon {
   height: 32px;
   width: 32px;
   line-height: 43px;
@@ -753,7 +785,7 @@ material-checkbox[disabled] {
   float: right;
 }
 
-material-dialog div .cardMenuBar {
+md-dialog div .cardMenuBar {
   margin: 0;
   line-height: 17px;
 }
@@ -771,8 +803,8 @@ material-dialog div .cardMenuBar {
   opacity: 0.7;
 }
 
-/* Styles for Material Tabs */
-.tabs-content .material-view {
+/* Styles for md Tabs */
+.tabs-content .md-view {
     background-color: #fff;
     height: 100%;
 }
@@ -787,20 +819,20 @@ div.infoBar {
     font-size: .8em;
 }
 
-material-tabs {
+md-tabs {
   width: auto;
   margin: -20px -20px 0 -20px;
 }
-material-tabs .tabs-header .tabs-header-items {
+md-tabs .tabs-header .tabs-header-items {
   background-color: #ffeb3b;
 }
 
-material-tab material-tab-label {
+md-tab md-tab-label {
   color: #000;
   opacity: 0.5;
 }
 
-material-tab material-tab-label.active {
+md-tab md-tab-label.active {
   color: #000;
   opacity: 1.0;
 }
@@ -810,15 +842,15 @@ a.active {
   opacity: 1.0; 
 }
 
-material-ink-bar {
+md-ink-bar {
   background: #000;
 }
 
-material-tabs .tabs-content {
+md-tabs .tabs-content {
     height: 100%;
 }
 
-material-card {
+md-card {
   margin-top: 16px;
   background-color: #ffff8d;
 }
@@ -830,7 +862,7 @@ ul#filters {
   display:none;
 }
 
-/* Styles for Material Voting Booth */
+/* Styles for md Voting Booth */
 #ballotCard {
   max-width: 300px;
   min-width: 300px;
@@ -868,34 +900,31 @@ ul#filters {
     background-color: #aaa;  
 }
 
-material-toolbar {
-  min-height: 48px;
-  height: 48px;
+md-toolbar {
+  box-shadow: 0px 1px 4px rgba(0,0,0,.3);
+  font-family: Roboto,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 20px;
+  height: 64px;
+  position: relative;
+  z-index: 1
 }
 
 .toolbarTitle {
-  margin-bottom: 15px;
-  font-size: 14px;
-  margin-left: 0px;
-  color: #fff;
+  display: inline-block;
+  margin-left: 12px;
+  vertical-align: middle;
 }
 
-.viewButton {
-  height: 26px;
-  width: 35px;
-  margin-top: 4px;
-}
 .viewButton:hover {
   opacity: 1;
 }
 
 .menu-icon {
-  top: 0;
-  height: 48px;
-  margin-top: 8px;
-  margin-left: 18px;
-  margin-right: 9px;
-  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px;
+  height: initial;
 }
 #optionsQuickNewPoll .menuDrawerButton {
   height: 25px;
@@ -933,3 +962,138 @@ material-toolbar {
 .chatLink {
   cursor: pointer;
 }
+.toggleImage {
+  height: 24px;
+  outline: none;
+  width: 24px;
+  direction: ltr;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+}
+.md-toolbar-tools {
+  display: inline-block;
+  position: relative;
+  color: white;
+  cursor: pointer;
+  min-width: 100px;
+  outline: none;
+  padding: 8px 0 8px 16px;
+  white-space: nowrap;
+  width: 240px;
+  min-height: 64px;
+}
+
+.sidenavToolbar {
+  border-bottom: 1px solid #e3e3e3;
+  margin-bottom: 12px;
+  background-color: #fff;
+  color: #333;
+}
+.sidenavToolbar:hover {
+background-color: #eee;
+}
+.grid-item-container {
+  border-top: 1px solid #e2e2e2;
+  padding: 10px 22px 14px 14px;
+  position: relative;
+}
+.streamMargin {
+  margin-top: 100px !important;
+}
+.streamTitles {
+  padding: 18px 0 18px 0;
+  color: #888888;
+  display: -webkit-flex;
+  outline: none;
+  font-weight: 500;
+  margin: 0px 10px;
+}
+.streamCardholder {
+  position: relative;
+}
+.firstCard {
+  margin-top: 16px;
+}
+.streamMainCard {
+  background-color: #fff;
+  height: 48px;
+  max-height: 48px;
+  margin: 0px;
+  cursor: pointer;
+  opacity: 1;
+  border-bottom: 1px solid #e3e3e3;
+  color: #444;
+  display: -webkit-flex;
+}
+.streamCardContentContainer {
+  width: 100%;
+}
+.streamPollLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  margin-left: 14px;
+  padding: 2px;
+  width: 50%;
+  margin-bottom: auto;
+  margin-left: 16px;
+  margin-top: auto;
+}
+.streamPollLine.gray {
+  color: #777;
+}
+.streamPollLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  margin-left: 14px;
+  padding: 2px;
+  width: 50%;
+  margin-bottom: auto;
+  margin-left: 16px;
+  margin-top: auto;
+}
+.streamCardMenuBar {
+  margin-left: -60px;
+}
+md-content.md-default-theme {
+  background-color: #EEEEEE;
+}
+md-dialog>md-content.md-default-theme {
+  background-color: #fff;
+}
+.paddingTop {
+  padding-top: 55px !important;
+}
+.quickFabButton {
+  position: fixed;
+  right: 39px;
+  bottom: 24px;
+}
+.streamPollLine .md-label {
+  display: none;
+} 
+.md-dialog-container {
+  background-color: rgba(229,229,229,.75);  
+}
+md-input-group {
+  font-size: inherit;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+#roleNameInput md-input-group.long > input {
+  width: 100%; 
+}
+md-input-group>input {
+  border-style: solid;
+}
+textarea {
+  resize:none;
+}
+
+
+

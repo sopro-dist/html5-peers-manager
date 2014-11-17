@@ -1,4 +1,4 @@
-.mainContentPolls { 
+/*.mainContentPolls { 
 	background: url(../assets/images/153450.jpg) top right no-repeat;
 	background-attachment: fixed;
 }
@@ -8,6 +8,9 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}*/
+.mainContentPolls { 
+	background-color: #eee;
 }
 material-card {
 	opacity: 0.9;
@@ -128,4 +131,7 @@ material-input-group label, .material-input-group label {
 }
 material-input-group input, material-input-group textarea, .material-input-group input, .material-input-group textarea {
 	outline-width: 0px;
+}
+.pantheonToolbar {
+	background-color: #4285f4 !important;
 }

@@ -1,16 +1,13 @@
-<material-dialog>
-  <div>
-    <div class="dialog-content">
-      <material-input style="width:100%;" id="roleNameInput" type="text" ng-model="roleName" placeholder="username@xmpp.cambrian.org"></material-input>
-    </div>
-    <div class="dialog-actions" layout="horizontal" layout-align="end">
-      <material-button id="closeButton" ng-click="close()">
+<md-dialog style="width:20%;">
+  <md-content>
+      <md-text-float id="roleNameInput" type="text" label="Peer Username" ng-model="roleName" class="long"> </md-text-float>
+  </md-content>
+  <div class="md-actions" layout="horizontal" layout-align="end">
+    <md-button id="closeButton" ng-click="close()">
         Close
-      </material-button>
-      <material-button id="saveButton" class="material-button-colored" ng-click="addPeer(roleName)">
+      </md-button>
+    <md-button id="saveButton" class="md-primary" ng-click="addPeer(roleName)">
         Add Peer
-      </material-button>
-    </div>
-
+      </md-button>
   </div>
-</material-dialog>
+</md-dialog>

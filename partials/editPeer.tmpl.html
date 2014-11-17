@@ -1,38 +1,38 @@
-<material-dialog>
-  <div class="dialog-content" layout="vertical">
+<md-dialog>
+  <md-content layout="vertical">
     <div layout="horizontal" layout-align="center">
       <input class="bigInput" ng-model="role.name" flex disabled></input>
       <img src="assets/images/avatar.png" width="100" height="100">
     </div>
-    <material-checkbox ng-model="role.recommend">Recommend</material-checkbox>
+    <md-checkbox ng-model="role.recommend">Recommend</md-checkbox>
     <label for="p1">Nym ID</label>
-      <textarea id="p1" ng-model="role.nymId" disabled></textarea>
+      <textarea id="p1" ng-model="role.nymId" placeholder="No Nym ID" disabled></textarea>
       <label for="p2">Public Key</label>
-      <p id="p2" style="margin:0px;">{{role.publicKey}}</p>
-  </div>
-  <div class="dialog-actions" layout="horizontal" layout-align="end">
-    <material-button id="pingButton" class="material-button-colored" ng-click="role.ping()">
+      <textarea id="p1" ng-model="role.publicKey" placeholder="No Public Key" disabled></textarea>
+  </md-content>
+  <div class="md-actions" layout="horizontal" layout-align="end">
+    <md-button id="pingButton" class="md-primary" ng-click="role.ping()">
       Ping
-    </material-button>
-    <material-button id="openChatButton" class="material-button-colored" ng-click="role.openChat()">
+    </md-button>
+    <md-button id="openChatButton" class="md-primary" ng-click="role.openChat()">
       Open Chat
-    </material-button>
+    </md-button>
     <span flex></span>
-    <material-button id="closeButton" ng-click="close()">
+    <md-button id="closeButton" ng-click="close()">
       Close
-    </material-button>
-    <material-button id="saveButton" class="material-button-colored" ng-click="addPeer(roleName)">
+    </md-button>
+    <md-button id="saveButton" class="md-primary" ng-click="editPeer()">
       Save
-    </material-button>
+    </md-button>
   </div>
-    <!--<material-input id="roleNameInput" type="text" ng-model="roleName" placeholder="Peer Username"></material-input>
+    <!--<md-input id="roleNameInput" type="text" ng-model="roleName" placeholder="Peer Username"></md-input>
   </div>
   <div class="dialog-actions" layout="horizontal" layout-align="end">
-    <material-button id="closeButton" ng-click="close()">
+    <md-button id="closeButton" ng-click="close()">
       Close
-    </material-button>
-    <material-button id="saveButton" class="material-button-colored" ng-click="addPeer(roleName)">
+    </md-button>
+    <md-button id="saveButton" class="md-button-colored" ng-click="addPeer(roleName)">
       Add Peer
-    </material-button>
+    </md-button>
   </div>-->
-</material-dialog>
+</md-dialog>
